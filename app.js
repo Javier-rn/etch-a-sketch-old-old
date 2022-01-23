@@ -17,33 +17,28 @@ function createGrid(nBoxes) {
             newBox.classList.add('box');
             container.append(newBox);
         }
-        addEvent();
+        addEvents();
     } else {
         alert('Please select a size between 4 and 50');
     }
 
 }
 
-function addEvent() {
+function addEvents() {
     const boxes = document.querySelectorAll('.box');
     boxes.forEach(box => {
         box.addEventListener('mouseover', function () {
             box.classList.add('hovered');
         })
     })
+    clearBtn.addEventListener('click', function () {
+        boxes.forEach(box => {
+            box.classList.remove('hovered');
+        })
+    })
 }
 
 createGrid(256);
-
-const boxes = document.querySelectorAll('.box');
-
-
-
-clearBtn.addEventListener('click', function () {
-    boxes.forEach(box => {
-        box.classList.remove('hovered');
-    })
-})
 
 gridBtn.addEventListener('click', function () {
     const size = prompt('Please select a new size (4 - 50): ')
